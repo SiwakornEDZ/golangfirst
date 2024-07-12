@@ -23,7 +23,8 @@ func main() {
 	defer cancel()
 
 	clientOptions := options.Client().ApplyURI("mongodb+srv://siwakornqwer:m0WfmokyC2YAp3lt@cluster0.qsog5xm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-	client, err := mongo.Connect(ctx, clientOptions)
+	var err error
+	client, err = mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		log.Fatal(err)
 	}
