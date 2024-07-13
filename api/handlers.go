@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func getUsers(c *gin.Context, client *mongo.Client) {
+func GetUsers(c *gin.Context, client *mongo.Client) {
 	collection := client.Database("test").Collection("coupons")
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()

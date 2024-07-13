@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/SiwakornEDZ/awesomeProject/api/handlers"
-	"github.com/SiwakornEDZ/awesomeProject/db/db"
+	"awesomeProject/api"
+	"awesomeProject/db"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -11,7 +11,7 @@ import (
 func main() {
 	router := gin.Default()
 
-	client, err := ConnectToDB()
+	client, err := db.ConnectToDB()
 	if err != nil {
 		log.Fatal("Failed to connect to MongoDB: ", err)
 	}
@@ -23,7 +23,7 @@ func main() {
 	})
 
 	router.GET("/coupons", func(c *gin.Context) {
-		getUsers(c, client)
+		handlers.GetUsers(c, client)
 	})
 
 	router.Run(":8080")
